@@ -26,7 +26,15 @@ public class Main {
         }
         else if (game == 2)
         {
-            
+            Scanner number = new Scanner(System.in);
+            System.out.println("Choose a number between 1-100");
+            int userNum = number.nextInt();
+            int compNum = (int) (101 * Math.random());
+            if (compNum > userNum)
+            {
+                System.out.println("Number is lower");
+            }
+
         }
         else
         {
