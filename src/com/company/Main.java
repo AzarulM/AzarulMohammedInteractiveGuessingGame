@@ -1,7 +1,5 @@
 package com.company;
-
 import java.util.Scanner;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -26,15 +24,36 @@ public class Main {
         }
         else if (game == 2)
         {
-            Scanner number = new Scanner(System.in);
-            System.out.println("Choose a number between 1-100");
-            int userNum = number.nextInt();
+            System.out.println("Think of a number from 1-100 and I will try to figure it out. Tell me if it is higher, lower, or correct. ");
             int compNum = (int) (101 * Math.random());
-            if (compNum > userNum)
+            System.out.println("Is your number " +compNum);
+            Scanner check = new Scanner(System.in);
+            String result = check.nextLine();
+            int lowValue = 0;
+            int highValue = 100;
+            int change = 0;
+            while(!(result.equals("Correct") || (result.equals("correct"))))
             {
-                System.out.println("Number is lower");
+                if (result.equals("Higher") || (result.equals("higher")))
+                {
+                    lowValue = compNum;
+                    change = (highValue - lowValue) / 2;
+                    compNum = lowValue + change;
+                    System.out.println("Is your number " + compNum);
+                    check = new Scanner(System.in);
+                    result = check.nextLine();
+                }
+                if (result.equals("Lower") || (result.equals("lower")))
+                {
+                    highValue = compNum;
+                    change = (highValue - lowValue) / 2;
+                    compNum = highValue - change;
+                    System.out.println("Is your number " + compNum);
+                    check = new Scanner(System.in);
+                    result = check.nextLine();
+                }
             }
-
+                System.out.println("I figured out the number " +name);
         }
         else
         {
